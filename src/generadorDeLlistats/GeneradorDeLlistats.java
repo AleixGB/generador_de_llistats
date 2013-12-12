@@ -8,7 +8,7 @@ package generadorDeLlistats;
 
 /**
  *
- * @author Aleix
+ * @author Aleix_Jordi
  */
 public class GeneradorDeLlistats {
 
