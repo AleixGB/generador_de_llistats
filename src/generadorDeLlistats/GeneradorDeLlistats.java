@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Aleix_Jordi
+ * @author Aleix_Jordi sadfdsafa
  */
 public class GeneradorDeLlistats {
     public static void main(String[] args) {
