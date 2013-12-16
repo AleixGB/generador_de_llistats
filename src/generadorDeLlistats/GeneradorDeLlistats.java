@@ -6,19 +6,29 @@
 
 package generadorDeLlistats;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Aleix_Jordi
  */
 public class GeneradorDeLlistats {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         
-        int valor = 0;
-        
+       AlumnesMap aMap = new AlumnesMap();
+       aMap.insertarAlumneMateria("1", "Pepitu", "2B");
+       aMap.insertarAlumneMateria("2", "Joanet", "2B");
+       aMap.insertarAlumneMateria("3", "Phont", "2B");
+       
+       aMap.insertarAlumneMateria("1", "Alexitu", "2B");
+       aMap.insertarAlumneMateria("2", "Alexitu", "2B");
+       
+       ArrayList<Alumne> a = aMap.obtenirAlumnes("1");
+       a.addAll(aMap.obtenirAlumnes("2"));
+       
+       for(int i = 0; i < a.size(); i++) {
+           System.out.println(a.get(i));
+       }
     }
     
 }
