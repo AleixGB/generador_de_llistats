@@ -1,22 +1,31 @@
 package generadorDeLlistats;
 
-public class Alumne {
-    
-    private String nom_cognoms, grup;
+public class Alumne implements Comparable<Alumne> {
 
-    public Alumne(String nom_cognoms, String grup) {
-        this.nom_cognoms = nom_cognoms;
+    private String nom, cognoms, grup;
+
+    public Alumne(String nom, String cognoms, String grup) {
+        this.nom = nom;
+        this.cognoms = cognoms;
         this.grup = grup;
     }
-       
-    public String getNom_cognoms() {
-        return nom_cognoms;
+
+    public String getNom() {
+        return nom;
     }
 
-    public void setNom_cognoms(String nom_cognoms) {
-        this.nom_cognoms = nom_cognoms;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
-   
+    
+    public String getCognoms() {
+        return cognoms;
+    }
+
+    public void setCognoms(String cognoms) {
+        this.cognoms = cognoms;
+    }
+
     public String getGrup() {
         return grup;
     }
@@ -27,6 +36,11 @@ public class Alumne {
 
     @Override
     public String toString() {
-        return "Alumne{" + "nom_cognoms=" + nom_cognoms + ", grup=" + grup + '}';
+        return "Alumne{" + "nom_cognoms=" + nom + cognoms + ", grup=" + grup + '}';
+    }
+
+    public int compareTo(Alumne a) {
+	int valor = this.getCognoms().compareTo(a.getCognoms());
+	return valor == 0 ? this.nom.compareTo(a.getNom()): valor;
     }
 }

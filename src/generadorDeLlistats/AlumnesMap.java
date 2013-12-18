@@ -1,40 +1,54 @@
 package generadorDeLlistats;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class AlumnesMap {
-    
-    private HashMap<String, ArrayList<Alumne>> alumnes;
-    private ArrayList<Alumne> current;
 
-    public AlumnesMap(){
-        alumnes = new HashMap<String, ArrayList<Alumne>>();
-        current = new ArrayList<Alumne>();
+    private TreeMap<String, TreeMap<String, Alumne>> alumnes;
+    private TreeMap<String, Alumne> currentAlumne;
+
+    public AlumnesMap() {
+        alumnes = new TreeMap<String, TreeMap<String, Alumne>>();
+        currentAlumne = new TreeMap<String, Alumne>();
     }
 
-    public HashMap<String, ArrayList<Alumne>> getAlumnes() {
+    public TreeMap<String, TreeMap<String, Alumne>> getAlumnes() {
         return alumnes;
     }
 
-    public void setAlumnes(HashMap<String, ArrayList<Alumne>> alumnes) {
+    public void setAlumnes(TreeMap<String, TreeMap<String, Alumne>> alumnes) {
         this.alumnes = alumnes;
     }
-    
-    public void insertarAlumneMateria(String materia, String nom_cognoms, String grup){
-       if(alumnes.containsKey(materia)){
-           current = alumnes.get(materia);
-       }else{
-           current = new ArrayList<Alumne>();
-       }    
-       //System.out.println(alumnes.get(materia));
-       current.add(new Alumne(nom_cognoms, grup));
-       alumnes.put(materia, current);
-       System.out.println("Inserto Alumne a la Materia "+ materia);
+
+    public void inserir(String materia, String nom, String cognoms, String grup) {
+        if (alumnes.containsKey(materia)) {
+            currentAlumne = alumnes.get(materia);
+        } else {
+            currentAlumne = new TreeMap<String, Alumne>();
+        }
+        //System.out.println(alumnes.get(materia));
+        currentAlumne.put(cognoms, new Alumne(nom, cognoms, grup));
+        alumnes.put(materia, currentAlumne);
     }
-    
-    public ArrayList<Alumne> obtenirAlumnes(String materia){
-        System.out.println("Abans d'obtenir");
+
+    public TreeMap<String, Alumne> obtenirAlumnesMateries(String[] materia) {
+        Iterator<Map.Entry<String, TreeMap<String, Alumne>>> llistatmap = alumnes.entrySet().iterator();
+        Map.Entry<String, TreeMap<String, Alumne>> entradamap;
+        while (llistatmap.hasNext()) {
+            entradamap = llistatmap.next();
+            for (int i = 0; i < materia.length; i++) {
+                if (entradamap.getKey().equals(materia[i])) {
+                    System.out.println(i+" "+ materia[i] + " " + entradamap.getValue());
+                    break;
+                }
+            }
+        }
+        return currentAlumne;
+    }
+
+    public TreeMap<String, Alumne> obtenirAlumnes(String materia) {
         return alumnes.get(materia);
     }
 }
