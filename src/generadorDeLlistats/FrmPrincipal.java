@@ -5,10 +5,17 @@
  */
 package generadorDeLlistats;
 
+import java.awt.Dimension;
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
+import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -33,6 +40,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jFC_buscadorFitxer = new javax.swing.JFileChooser();
+        jPB_Carregar = new javax.swing.JProgressBar();
         jB_examinar = new javax.swing.JButton();
         jTF_fitxer = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -40,7 +48,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTA_materiesList = new javax.swing.JTextArea();
 
-        jFC_buscadorFitxer.setDialogTitle("Buscador del fitxer SVC");
+        jFC_buscadorFitxer.setDialogTitle("Buscador de fitxers CSV");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Generador de llistats");
@@ -74,26 +82,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jTF_fitxer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jB_examinar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTF_fitxer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                        .addComponent(jB_examinar)
-                        .addGap(25, 25, 25))))
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -101,21 +107,58 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addComponent(jTF_fitxer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jB_examinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_examinarActionPerformed
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Fitxers CSV", "csv");
+        jFC_buscadorFitxer.setFileFilter(filter);
+        jFC_buscadorFitxer.setAcceptAllFileFilterUsed(false);
+        jFC_buscadorFitxer.setCurrentDirectory(new File("."));
+        jFC_buscadorFitxer.setPreferredSize(new Dimension(600, 450));
         if (jFC_buscadorFitxer.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = jFC_buscadorFitxer.getSelectedFile();
             if (file.getName().substring(file.getName().length() - 3, file.getName().length()).equals("csv")) {
                 jTF_fitxer.setText(file.getName());
                 //Fer que agafi les dades del csv i posarles en el textArea...
-                jTA_materiesList.paste();
+                //Es pot fer un thread d'una barra carregant mentre es procesa el fitxer xml i un altre thread per processar
+
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        JFrame frame = new JFrame("Carregant fitxer...");
+                        frame.setContentPane(jPB_Carregar);
+                        frame.setVisible(true);
+                        frame.pack();
+
+                        for (int i = jPB_Carregar.getMinimum(); i < jPB_Carregar.getMaximum(); i++) {
+                            final int percent = i;
+                            try {
+                                SwingUtilities.invokeLater(new Runnable() {
+                                    public void run() {
+                                        jPB_Carregar.setValue(percent);
+                                    }
+                                });
+                                Thread.sleep(10);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                        JOptionPane.showMessageDialog(new JDialog(), "Fitxer carregat correctament");
+                    }
+                });
+
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        Controlador controlador = new Controlador();
+                    }
+                });
+                jTA_materiesList.append("meltiu :3");
             } else {
                 JOptionPane.showMessageDialog(new JDialog(), "Has escollit un fitxer que no és *.csv", "Fitxer erroni", JOptionPane.ERROR_MESSAGE);
             }
@@ -164,6 +207,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JFileChooser jFC_buscadorFitxer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JProgressBar jPB_Carregar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTA_materiesList;
     private javax.swing.JTextField jTF_fitxer;
