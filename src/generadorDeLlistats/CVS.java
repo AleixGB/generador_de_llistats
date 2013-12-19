@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class CVS {
     
-    CVS obj = new CVS();
+    //CVS obj = new CVS();
     //obj.run();
     
     public void run() {
@@ -15,13 +15,13 @@ public class CVS {
         String csvFile = "./src/arxiu.csv"; // cuidado amb el nom
         BufferedReader buffer = null;
         String line = "";
-        String cvsSplitBy = ",";
+        String cvsSplit = ",";
 
         try {
 
             buffer = new BufferedReader(new FileReader(csvFile));
             while ((line = buffer.readLine()) != null) {
-                String[] csv = line.split(cvsSplitBy);
+                String[] csv = line.split(cvsSplit);
                 System.out.println("Alumne = Nom: " + csv[1] + csv[2]);
             }
             
@@ -40,6 +40,5 @@ public class CVS {
         }
         System.out.println("Ok");
     }
-
     
 }
