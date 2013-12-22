@@ -1,15 +1,20 @@
-package xml_dom;
+package generadorDeLlistats;
 
 import java.io.File;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -18,63 +23,68 @@ import org.w3c.dom.Element;
  */
 public class XML_DOM {
 
-    public static void main(String[] args) throws ParserConfigurationException, TransformerConfigurationException, TransformerException {
+    private static List llistaMateries;
+    private static AlumnesMap alumnesMap;
+    private static boolean creat;
 
-        //public static void generaXML() {
+    public XML_DOM(List llistaMateries, AlumnesMap alumnesMap) {
+        this.llistaMateries = llistaMateries;
+        this.alumnesMap = alumnesMap;
+        creat = false;
+    }
+
+    public void crearXML() {
+        Document doc;
         try {
-            Document doc = (Document) DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+            doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
             Element rootElement = doc.createElement("llistes");
             doc.appendChild(rootElement);
 
-            String materia = "Programació";
-            String cogsNom = "Guix Buxeda, Aleix";
-            String grup = "2DAM";
-            rootElement.appendChild(crearLlista(doc, materia, cogsNom, grup));
+            for (Object materia : llistaMateries) {
+                Element alumnesMateria = doc.createElement("llista");
+                alumnesMateria.setAttribute("materia", materia.toString());
+                rootElement.appendChild(alumnesMateria);
 
-            materia = "Threads";
-            cogsNom = "Reixach Cargol, Jordi";
-            grup = "2DAM";
-            rootElement.appendChild(crearLlista(doc, materia, cogsNom, grup));
-
-            materia = "Threads";
-            cogsNom = "Guix Buxeda, Aleix";
-            grup = "2DAM";
-            rootElement.appendChild(crearLlista(doc, materia, cogsNom, grup));
-
-            TransformerFactory transformerFactory = TransformerFactory
-                    .newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("llista_alumnes.xml"));
-
-            transformer.transform(source, result);
-
-            System.out.println("Arxiu enregistrat!");
-
-        } catch (ParserConfigurationException pce) {
-            pce.printStackTrace();
+                Iterator<Map.Entry<String, Alumne>> llistatAlumnes = alumnesMap.obtenirAlumnes(materia.toString()).entrySet().iterator();
+                Map.Entry<String, Alumne> dades;
+                while (llistatAlumnes.hasNext()) {
+                    dades = llistatAlumnes.next();
+                    alumnesMateria.appendChild(inserir(doc, dades));
+                }
+            }
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+            transformer.transform(new DOMSource(doc), new StreamResult(new File("llista_alumnes.xml")));
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(XML_DOM.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransformerConfigurationException ex) {
+            Logger.getLogger(XML_DOM.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransformerException ex) {
+            Logger.getLogger(XML_DOM.class.getName()).log(Level.SEVERE, null, ex);
         }
+        creat = true;
     }
-//}
 
-    static private Element crearLlista(Document doc, String materia, String cogsNom, String grup) {
+    public Element inserir(Document doc, Map.Entry<String, Alumne> dades) {
+        Element alumne = doc.createElement("alumne");
+        Alumne alumneDades = dades.getValue();
 
-        Element list = doc.createElement("llista"); // atribut(s) per llista
-        Attr attr = doc.createAttribute("materia"); // Manera llarga d'afegir un atribut
-        attr.setValue(materia);
-        list.setAttributeNode(attr);
-        
-        Element alumn = doc.createElement("alumne");
-        list.appendChild(alumn);
+        Element e = doc.createElement("cognomsNom");
+        e.appendChild(doc.createTextNode(alumneDades.getCognoms() + "," + alumneDades.getNom()));
+        alumne.appendChild(e);
 
-        Element e = doc.createElement("cognomsNom"); // Nom
-        e.appendChild(doc.createTextNode(cogsNom));
-        alumn.appendChild(e);
+        e = doc.createElement("grup");
+        e.appendChild(doc.createTextNode(alumneDades.getGrup()));
+        alumne.appendChild(e);
 
-        e = doc.createElement("grup"); // Grup
-        e.appendChild(doc.createTextNode(grup));
-        alumn.appendChild(e);
+        return alumne;
+    }
 
-        return list;
+    public boolean getCreat(){
+        return creat;
     }
 }
