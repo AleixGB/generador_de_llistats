@@ -19,7 +19,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 /*
- * @author Aleix
+ * @author Aleix i Jordi
  */
 public class XML_DOM {
 

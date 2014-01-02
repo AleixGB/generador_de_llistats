@@ -16,7 +16,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author reixowtf
+ * @author Aleix i Jordi
  */
 public class FrmPrincipal extends javax.swing.JFrame {
 
