@@ -9,6 +9,11 @@
     </Component>
     <Component class="javax.swing.JProgressBar" name="jPB_Carregar">
     </Component>
+    <Component class="javax.swing.JFileChooser" name="jFC_guardarFitxer">
+      <Properties>
+        <Property name="dialogType" type="int" value="1"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>

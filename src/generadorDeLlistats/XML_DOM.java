@@ -26,11 +26,13 @@ public class XML_DOM {
     private static List llistaMateries;
     private static AlumnesMap alumnesMap;
     private static boolean creat;
+    private static String nomFitxer;
 
-    public XML_DOM(List llistaMateries, AlumnesMap alumnesMap) {
+    public XML_DOM(List llistaMateries, AlumnesMap alumnesMap, String nomFitxer) {
         this.llistaMateries = llistaMateries;
         this.alumnesMap = alumnesMap;
         creat = false;
+        this.nomFitxer = nomFitxer;
     }
 
     public void crearXML() {
@@ -58,7 +60,7 @@ public class XML_DOM {
             transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
             transformer.setOutputProperty(OutputKeys.METHOD, "xml");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-            transformer.transform(new DOMSource(doc), new StreamResult(new File("llista_alumnes.xml")));
+            transformer.transform(new DOMSource(doc), new StreamResult(new File(nomFitxer)));
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(XML_DOM.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerConfigurationException ex) {

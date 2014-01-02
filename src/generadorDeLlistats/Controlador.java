@@ -35,8 +35,8 @@ public class Controlador {
         return alumnesMap.obtenirMateries();
     }
     
-    public boolean crearXML(List llistaMateries){
-        xml = new XML_DOM(llistaMateries, alumnesMap);    
+    public boolean crearXML(List llistaMateries, String nomFitxer){
+        xml = new XML_DOM(llistaMateries, alumnesMap, nomFitxer);    
         xml.crearXML();
         return xml.getCreat();
     }

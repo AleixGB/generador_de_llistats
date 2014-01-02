@@ -5,8 +5,12 @@
  */
 package generadorDeLlistats;
 
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.JDialog;
@@ -23,7 +27,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private Controlador controlador;
 
     /**
-     * CremateriesSeleccionadestes new form GUI
+     * FrmPrincipal new form GUI
      */
     public FrmPrincipal() {
         initComponents();
@@ -42,6 +46,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jFC_buscadorFitxer = new javax.swing.JFileChooser();
         jPB_Carregar = new javax.swing.JProgressBar();
+        jFC_guardarFitxer = new javax.swing.JFileChooser();
         jB_examinar = new javax.swing.JButton();
         jTF_fitxer = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -51,6 +56,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jB_GenerarLlistes = new javax.swing.JButton();
 
         jFC_buscadorFitxer.setDialogTitle("Buscador de fitxers CSV");
+
+        jFC_guardarFitxer.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Generador de llistats");
@@ -134,8 +141,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jB_examinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_examinarActionPerformed
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV Files", "csv");
-        jFC_buscadorFitxer.setFileFilter(filter);
+        jFC_buscadorFitxer.setFileFilter(new FileNameExtensionFilter("CSV Files", "csv"));
         jFC_buscadorFitxer.setAcceptAllFileFilterUsed(false);
         jFC_buscadorFitxer.setCurrentDirectory(new File("."));
         jFC_buscadorFitxer.setPreferredSize(new Dimension(600, 450));
@@ -163,7 +169,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         }
                         if (jL_materies.getSelectedValue() != null) {
                             jB_GenerarLlistes.setEnabled(true);
-                        }else{
+                        } else {
                             jB_GenerarLlistes.setEnabled(false);
                         }
                     }
@@ -177,8 +183,34 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jB_examinarActionPerformed
 
     private void jB_GenerarLlistesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_GenerarLlistesActionPerformed
-        if (controlador.crearXML(jL_materies.getSelectedValuesList())) {
-            JOptionPane.showMessageDialog(new JDialog(), "S'ha creat el fitxer xml correctament");
+        File fitxer = new File("llista_alumnes.xml");
+        int saveJOPane = JOptionPane.showConfirmDialog(null, "Vols guardar-lo manualment?", "Guardar Arxiu", JOptionPane.YES_NO_OPTION);
+        if (saveJOPane == JOptionPane.YES_OPTION) {
+            jFC_guardarFitxer.setFileFilter(new FileNameExtensionFilter("XML Files", "xml"));
+            jFC_guardarFitxer.setAcceptAllFileFilterUsed(false);
+            jFC_guardarFitxer.setCurrentDirectory(new File("."));
+            jFC_guardarFitxer.setPreferredSize(new Dimension(600, 450));
+            if (jFC_guardarFitxer.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+                File file = jFC_guardarFitxer.getSelectedFile();
+                if (file.getName().endsWith(".xml")) {
+                    fitxer = file;
+                } else {
+                    fitxer = new File(file.getName()+".xml");
+                }
+            }
+        }
+
+        if (controlador.crearXML(jL_materies.getSelectedValuesList(), fitxer.getName())) {
+            saveJOPane = JOptionPane.showConfirmDialog(null, "El vols mostrar?", "Mostrar fitxer", JOptionPane.YES_NO_OPTION);
+            if (saveJOPane == JOptionPane.YES_OPTION) {
+                try {
+                    Desktop.getDesktop().open(fitxer);
+                } catch (IOException ex) {
+                    Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+
+            }
         } else {
             JOptionPane.showMessageDialog(new JDialog(), "No s'ha pogut crear el fitxer", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
@@ -199,16 +231,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -224,6 +261,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jB_GenerarLlistes;
     private javax.swing.JButton jB_examinar;
     private javax.swing.JFileChooser jFC_buscadorFitxer;
+    private javax.swing.JFileChooser jFC_guardarFitxer;
     private javax.swing.JList jL_materies;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
