@@ -7,12 +7,15 @@ package generadorDeLlistats;
 
 import java.awt.Desktop;
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -31,6 +34,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
      */
     public FrmPrincipal() {
         initComponents();
+        // Centrem el JFrame al mig de la pantalla
+        setLocationRelativeTo(null);
+        // Definim l'icona
+        setIconImage(new ImageIcon(getClass().getResource("/img/icona.png")).getImage());
     }
 
     /**
@@ -62,6 +69,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Generador de llistats");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(getIconImage());
+        setIconImages(null);
 
         jB_examinar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jB_examinar.setText("Examinar....");
@@ -216,7 +225,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JDialog(), "No s'ha pogut crear el fitxer", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jB_GenerarLlistesActionPerformed
-
+  
     /**
      * @param args the commmateriesSeleccionadesnd line
      * materiesSeleccionadesrguments
@@ -257,6 +266,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_GenerarLlistes;
