@@ -1,69 +1,363 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <llistes>
-  <llista materia="2EO">
+  <llista materia="1BI">
     <alumne>
-      <cognomsNom>Abellan Ricart, Judit</cognomsNom>
-      <grup>2BatxA</grup>
+      <cognomsNom>Adam Gómez, Arnau</cognomsNom>
+      <grup>1BatxA</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Arimany Colomer, Jordi</cognomsNom>
-      <grup>2BatxA</grup>
+      <cognomsNom>Agulla Flores, Antoni</cognomsNom>
+      <grup>1BatxC</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Azzouzi El Ouariachi, Nohayla</cognomsNom>
-      <grup>2BatxA</grup>
+      <cognomsNom>Badia Luque, Mireia</cognomsNom>
+      <grup>1BatxC</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Comas Contreras, Anna</cognomsNom>
-      <grup>2BatxA</grup>
+      <cognomsNom>Batalla Callau, Arnau</cognomsNom>
+      <grup>1BatxC</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Cos Cros, Arnau</cognomsNom>
-      <grup>2BatxA</grup>
+      <cognomsNom>Cabrera De León, Florencia</cognomsNom>
+      <grup>1BatxC</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Fedynych , Illona</cognomsNom>
-      <grup>2BatxB</grup>
+      <cognomsNom>Calvo Hidalgo, Carlos</cognomsNom>
+      <grup>1BatxA</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Fàbrega Soler, Pol</cognomsNom>
-      <grup>2BatxB</grup>
+      <cognomsNom>Capdevila Legares, Júlia</cognomsNom>
+      <grup>1BatxC</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Gallofré Suari, Jana</cognomsNom>
-      <grup>2BatxB</grup>
+      <cognomsNom>Cobo Rovira, David</cognomsNom>
+      <grup>1BatxC</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Gonzalez Ortiz, Sara</cognomsNom>
-      <grup>2BatxB</grup>
+      <cognomsNom>Crusellas Pérez, Marina</cognomsNom>
+      <grup>1BatxA</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Jaimez Moreno, Tània</cognomsNom>
-      <grup>2BatxB</grup>
+      <cognomsNom>Cáceres Garcia, Elias</cognomsNom>
+      <grup>1BatxA</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Llop Sellas, Adrià</cognomsNom>
-      <grup>2BatxB</grup>
+      <cognomsNom>De Bolos Rivas, Ariadna</cognomsNom>
+      <grup>1BatxC</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Martí Pujol, Aleix</cognomsNom>
-      <grup>2BatxB</grup>
+      <cognomsNom>Font Martín, Júlia</cognomsNom>
+      <grup>1BatxC</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Masmitjà Rossell, Raquel</cognomsNom>
-      <grup>2BatxB</grup>
+      <cognomsNom>García Cañada, Laura</cognomsNom>
+      <grup>1BatxC</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Puigdemont Canal, Gerard</cognomsNom>
-      <grup>2BatxC</grup>
+      <cognomsNom>Lorenzo Pujol, Carla</cognomsNom>
+      <grup>1BatxB</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Pujol Duran, Cristina</cognomsNom>
-      <grup>2BatxC</grup>
+      <cognomsNom>Masó Juvanteny, Anna</cognomsNom>
+      <grup>1BatxC</grup>
     </alumne>
     <alumne>
-      <cognomsNom>Xu , Yuan</cognomsNom>
-      <grup>2BatxC</grup>
+      <cognomsNom>Ortolà Tapia, Irene</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Osejo Benítez, Rocio Lizeth</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Pewton Ferrer, Georgia</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Puigvert Rovira, Paula</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Romero Puig, Judit</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Routh Barons, Lola</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Ruz Coromi, Claudia</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Suy Jiménez, Cristina</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Vilanova Giménez, Miquel</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+  </llista>
+  <llista materia="1CM">
+    <alumne>
+      <cognomsNom>Adam Gómez, Arnau</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Agulla Flores, Antoni</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Alabau Blanquera, Adrià</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Almaraz , Rocio Luz</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Aula Bars, Daniel</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Aumatell Anglada, Mireia</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Badia Luque, Mireia</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Batalla Callau, Arnau</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Bazan Ramos, Adriana</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Bellagnech Berraaouan, Salma</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Benítez Fernández, Jordi</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Bertran Gardella, Albert</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Cabrera De León, Florencia</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Calvo Hidalgo, Carlos</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Canseco Pla, Pol</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Capdevila Legares, Júlia</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Carbonell Martín, Guillem</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Cerrejón Rincón, Judit</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Cobo Rovira, David</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Coma Cano, Jordi</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Crusellas Pérez, Marina</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Cáceres Garcia, Elias</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>De Bolos Rivas, Ariadna</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>El Ouarik Chemlal, Yassinne</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Espunya Teixidor, Oriol</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Font Martín, Júlia</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Font Puigvert, Júlia</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Garcia Páez, Ruben</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>García Cañada, Laura</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Gil Leon, Andrea</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Grabulosa Soler, Maria</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Gusi Sambola, Laia</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Juanola Ferres, Cristina</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Linares Valencia, Adrià</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Lorenzo Pujol, Carla</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Luque Barcons, Jordi</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Lázaro Padrosa, Marc</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>López Muro, Judit</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Marguí Anglada, Núria</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Martínez Campos, Selena</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Masó Juvanteny, Anna</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Morchón Serrat, Meritxell</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Morera Fluvia, Mireia</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Oliveras Masias, Júlia</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Ortolà Tapia, Irene</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Osejo Benítez, Rocio Lizeth</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Padrosa Dorca, Albert</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Pararols Morejon, Albert</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Peré Senis, Arnau</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Pewton Ferrer, Georgia</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Planesas Carnero, Ariadna</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Puigvert Rovira, Paula</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Pujolriu Juvanteny, Guillem</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Romero Puig, Judit</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Routh Barons, Lola</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Ruz Coromi, Claudia</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Sancho Delgado, Tània</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Singh , Mandeep</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Solà Coll, Jordina</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Suy Jiménez, Cristina</cognomsNom>
+      <grup>1BatxC</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Torras Serrat, Sira</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Vilalta Riera, Joan</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Vilanova Giménez, Miquel</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Zanchi Hartl, Marco</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>de Corral Torres, Gorka</cognomsNom>
+      <grup>1BatxA</grup>
     </alumne>
   </llista>
 </llistes>

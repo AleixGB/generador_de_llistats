@@ -192,6 +192,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jFC_guardarFitxer.setPreferredSize(new Dimension(600, 450));
             if (jFC_guardarFitxer.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 File file = jFC_guardarFitxer.getSelectedFile();
+                
                 if (file.getName().endsWith(".xml")) {
                     fitxer = file;
                 } else {

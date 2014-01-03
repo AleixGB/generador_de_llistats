@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<llistes>
+  <llista materia="1EO">
+    <alumne>
+      <cognomsNom>Almaraz , Rocio Luz</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Aula Bars, Daniel</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Badia Roura, Tura</cognomsNom>
+      <grup>2BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Benítez Fernández, Jordi</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Bertran Gardella, Albert</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Espunya Teixidor, Oriol</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Font Puigvert, Júlia</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Fàbrega Soler, Pol</cognomsNom>
+      <grup>2BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Gil Leon, Andrea</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Gusi Sambola, Laia</cognomsNom>
+      <grup>1BatxA</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Juanola Ferres, Cristina</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Linares Valencia, Adrià</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Marguí Anglada, Núria</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Morera Fluvia, Mireia</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Sancho Delgado, Tània</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Solà Coll, Jordina</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+    <alumne>
+      <cognomsNom>Torras Serrat, Sira</cognomsNom>
+      <grup>1BatxB</grup>
+    </alumne>
+  </llista>
+</llistes>
