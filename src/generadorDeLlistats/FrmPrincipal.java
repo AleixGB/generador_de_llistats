@@ -61,6 +61,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jL_materies = new javax.swing.JList();
         jB_GenerarLlistes = new javax.swing.JButton();
+        jB_Seleccionar = new javax.swing.JButton();
+        jB_Desseleccionar = new javax.swing.JButton();
 
         jFC_buscadorFitxer.setDialogTitle("Buscador de fitxers CSV");
 
@@ -101,6 +103,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jB_Seleccionar.setText("Seleccionar tot");
+        jB_Seleccionar.setEnabled(false);
+        jB_Seleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_SeleccionarActionPerformed(evt);
+            }
+        });
+
+        jB_Desseleccionar.setText("Deselecciona tot");
+        jB_Desseleccionar.setEnabled(false);
+        jB_Desseleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_DesseleccionarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,6 +126,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jB_Seleccionar)
+                        .addGap(44, 44, 44)
+                        .addComponent(jB_Desseleccionar)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTF_fitxer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
@@ -131,18 +154,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jB_examinar)
+                    .addComponent(jB_examinar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTF_fitxer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jB_Seleccionar)
+                    .addComponent(jB_Desseleccionar))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(38, 38, 38)
                         .addComponent(jB_GenerarLlistes, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,6 +192,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 for (String materia : controlador.obtenirMateries()) {
                     llistaMateries.addElement(materia);
                 }
+                jB_Seleccionar.setEnabled(true);
+                jB_Desseleccionar.setEnabled(true);
                 jL_materies.setModel(llistaMateries);
 
                 jL_materies.setSelectionModel(new DefaultListSelectionModel() {
@@ -225,6 +253,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JDialog(), "No s'ha pogut crear el fitxer", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jB_GenerarLlistesActionPerformed
+
+    private void jB_SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_SeleccionarActionPerformed
+        jL_materies.setSelectionInterval(0, jL_materies.getModel().getSize()-1);
+    }//GEN-LAST:event_jB_SeleccionarActionPerformed
+
+    private void jB_DesseleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_DesseleccionarActionPerformed
+        jL_materies.clearSelection();
+        jB_GenerarLlistes.setEnabled(false);
+    }//GEN-LAST:event_jB_DesseleccionarActionPerformed
   
     /**
      * @param args the commmateriesSeleccionadesnd line
@@ -269,7 +306,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jB_Desseleccionar;
     private javax.swing.JButton jB_GenerarLlistes;
+    private javax.swing.JButton jB_Seleccionar;
     private javax.swing.JButton jB_examinar;
     private javax.swing.JFileChooser jFC_buscadorFitxer;
     private javax.swing.JFileChooser jFC_guardarFitxer;
