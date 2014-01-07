@@ -1,6 +1,6 @@
 package generadorDeLlistats;
 
-public class Alumne implements Comparable<Alumne> {
+public class Alumne {
 
     private String nom, cognoms, grup;
 
@@ -37,10 +37,5 @@ public class Alumne implements Comparable<Alumne> {
     @Override
     public String toString() {
         return "Alumne{" + "nom_cognoms=" + nom + cognoms + ", grup=" + grup + '}';
-    }
-
-    public int compareTo(Alumne a) {
-	int valor = this.getCognoms().compareTo(a.getCognoms());
-	return valor == 0 ? this.nom.compareTo(a.getNom()): valor;
     }
 }
