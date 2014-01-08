@@ -9,8 +9,10 @@ import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -52,7 +54,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jFC_buscadorFitxer = new javax.swing.JFileChooser();
-        jPB_Carregar = new javax.swing.JProgressBar();
         jFC_guardarFitxer = new javax.swing.JFileChooser();
         jB_examinar = new javax.swing.JButton();
         jTF_fitxer = new javax.swing.JTextField();
@@ -229,11 +230,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
             jFC_guardarFitxer.setPreferredSize(new Dimension(600, 450));
             if (jFC_guardarFitxer.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 File file = jFC_guardarFitxer.getSelectedFile();
-                
+
                 if (file.getName().endsWith(".xml")) {
                     fitxer = file;
                 } else {
-                    fitxer = new File(file.getName()+".xml");
+                    fitxer = new File(file.getName() + ".xml");
                 }
             }
         }
@@ -242,7 +243,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
             saveJOPane = JOptionPane.showConfirmDialog(null, "El vols mostrar?", "Mostrar fitxer", JOptionPane.YES_NO_OPTION);
             if (saveJOPane == JOptionPane.YES_OPTION) {
                 try {
-                    Desktop.getDesktop().open(fitxer);
+                    if (!System.getProperty("os.name").contains("Windows")) {
+                        Desktop.getDesktop().open(fitxer);
+                    } else if(comprovarExcelExistent()){
+                       Runtime.getRuntime().exec("cmd /c start excel \"\" " + fitxer + "");
+                    }else{
+                        Desktop.getDesktop().open(fitxer);
+                    }
                 } catch (IOException ex) {
                     Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -254,15 +261,30 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jB_GenerarLlistesActionPerformed
 
+    private boolean comprovarExcelExistent() {
+        try {
+            Process p = Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c", "assoc", ".xls"});
+            BufferedReader input
+                    = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String extensionType = input.readLine();
+            input.close();
+            if (extensionType == null) {
+                return false;
+            }
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+        return true;
+    }
     private void jB_SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_SeleccionarActionPerformed
-        jL_materies.setSelectionInterval(0, jL_materies.getModel().getSize()-1);
+        jL_materies.setSelectionInterval(0, jL_materies.getModel().getSize() - 1);
     }//GEN-LAST:event_jB_SeleccionarActionPerformed
 
     private void jB_DesseleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_DesseleccionarActionPerformed
         jL_materies.clearSelection();
         jB_GenerarLlistes.setEnabled(false);
     }//GEN-LAST:event_jB_DesseleccionarActionPerformed
-  
+
     /**
      * @param args the commmateriesSeleccionadesnd line
      * materiesSeleccionadesrguments
@@ -303,7 +325,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_Desseleccionar;
@@ -315,7 +337,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JList jL_materies;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JProgressBar jPB_Carregar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTF_fitxer;
     // End of variables declaration//GEN-END:variables
